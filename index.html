@@ -2169,14 +2169,49 @@ body.light-mode .master-mode-reset-note{color:#8b5b54}
 }
 </style>
 
+
+<style id="menuCornerControlsPatch">
+.fullscreen-btn,
+.theme-toggle-btn{
+  position:absolute !important;
+  left:auto !important;
+  right:14px !important;
+  z-index:80 !important;
+}
+.fullscreen-btn{top:12px !important}
+.theme-toggle-btn{top:56px !important}
+
+.top-fixed{
+  position:absolute !important;
+  top:12px !important;
+  left:auto !important;
+  right:14px !important;
+  z-index:80 !important;
+  display:flex !important;
+  flex-direction:column !important;
+  align-items:flex-end !important;
+  gap:6px !important;
+}
+
+.app{padding-top:18px !important}
+header{padding-right:175px !important}
+
+@media(max-width:680px){
+  .fullscreen-btn{top:8px !important;right:8px !important}
+  .theme-toggle-btn{top:50px !important;right:8px !important}
+  .top-fixed{top:8px !important;right:8px !important}
+  header{padding-right:145px !important}
+}
+</style>
+
 </head>
 <body>
 <button class="fullscreen-btn" id="fullscreenBtn" type="button">⛶ Plein écran</button>
-<button class="theme-toggle-btn" id="themeToggleBtn" type="button">☀️ Mode clair</button>
+<button class="theme-toggle-btn" id="themeToggleBtn" type="button">Mode clair</button>
 <main class="app">
 <header>
   <h1>Multiplication multiples</h1>
-  <div class="subtitle-row"><span class="app-version">v1.15</span></div>
+  <div class="subtitle-row"><span class="app-version">v1.16</span></div>
 </header>
 
 <section id="menuScreen" class="panel menu-panel">
@@ -2430,7 +2465,7 @@ function enregistrerResultatMathas(score,total,niveau,niveauRang,aideTables=fals
   const THEME_KEY='multi2_theme_v1';
   function setTheme(light){
     document.body.classList.toggle('light-mode',!!light);
-    themeToggleBtn.textContent=light?'🌙 Mode sombre':'☀️ Mode clair';
+    themeToggleBtn.textContent=light?'Mode sombre':'Mode clair';
     safeSet(THEME_KEY,light?'light':'dark')
   }
   setTheme(safeGet(THEME_KEY,'dark')==='light');
